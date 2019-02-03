@@ -53,7 +53,7 @@ margin-top: 20px;
 function Login(props) {
     return (
         <LoginCard>
-            <LoginLogo src={require('../img/tipease4.png')} alt=""/>
+            <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
             <StyledForm>
                 <StyledInput
                     type="text"
