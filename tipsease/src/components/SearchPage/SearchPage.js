@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RestaurantSearch from "./RestaurantSearch";
+// import RestaurantSearch from "./RestaurantSearch";
 import EmployeeList from "./EmployeeList";
 
 class SearchPage extends Component {
@@ -9,9 +9,9 @@ class SearchPage extends Component {
         return (
             <div>
                 {/* <SearchBar /> */}
-                <RestaurantSearch 
+                {/* <RestaurantSearch 
                 restaurantList={this.props.restaurantList}
-                />
+                /> */}
                 <EmployeeList 
                 employeeList={this.props.employeeList}
                 />

@@ -6,6 +6,10 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 250px;
     margin: 20px;
     padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 `
 
 const EmployeeImg = styled.img`
@@ -24,7 +28,7 @@ const Name = styled.p`
 function EmployeeCard(props) {
     return (
         <StyledEmployee>
-            <EmployeeImg src={props.employee.photo_url} alt=""/>
+            <EmployeeImg src={props.employee.imageUrl} alt=""/>
             <Name>{props.employee.name}</Name>
         </StyledEmployee>
     )
