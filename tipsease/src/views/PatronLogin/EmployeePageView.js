@@ -1,15 +1,39 @@
 import React from "react";
 import { connect } from "react-redux";
 import EmployeePage from "../../components/EmployeePage/EmployeePage"
-import { getEmployees } from "../../store/actions";
+import { getEmployees, updateTip } from "../../store/actions";
+
 
 class EmployeePageView extends React.Component {
     state = {
-        employeeList: []
+        employeeList: [],
+        tippedEmployee: {
+            name: "",
+            id: null,
+            imageUrl: "",
+            description: "",
+            price: null,
+            shipping: ""
+        }
     }
 
+    handleChanges = e => {
+        e.preventDefault();
+        this.setState({tippedEmployee: {
+            ...this.state.tippedEmployee,
+            [e.target.name]: e.target.value
+        }})
+    }
     componentDidMount() {
         this.props.getEmployees();
+    }
+
+    
+
+    addTip = (e, idx) => {
+        e.preventDefault();
+        console.log("adding tip")
+        this.props.updateTip(idx, this.state.tippedEmployee)
     }
 
     render() {
@@ -17,6 +41,8 @@ class EmployeePageView extends React.Component {
             <EmployeePage
             employeeList={this.props.employeeList}
             match={this.props.match}
+            addTip={this.addTip}
+            handleChanges={this.handleChanges}
             />
         )
     }
@@ -28,6 +54,7 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { 
-        getEmployees
+        getEmployees,
+        updateTip
     }
 )(EmployeePageView);

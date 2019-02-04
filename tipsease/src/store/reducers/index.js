@@ -1,12 +1,16 @@
 import {
     FETCHING_EMPLOYEES_START, 
     FETCHING_EMPLOYEES_SUCCESS, 
-    FETCHING_EMPLOYEES_FAILURE
+    FETCHING_EMPLOYEES_FAILURE,
+    UPDATING_TIP_START,
+    UPDATING_TIP_SUCCESS,
+    UPDATING_TIP_FAILURE,
 } from "../actions"
 
 const initialState = {
     employeeList: [],
     isFetching: false,
+    isUpdatingTip: false,
     error: null,
 }
 
@@ -27,6 +31,24 @@ const employeeList = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
+                error: action.payload
+            }
+        case UPDATING_TIP_START:
+            return {
+                ...state,
+                isUpdatingTip: true,
+            }
+        case UPDATING_TIP_SUCCESS:
+            return {
+                ...state,
+                isUpdatingTip: false,
+                employeeList: action.payload
+
+            }
+        case UPDATING_TIP_FAILURE:
+            return {
+                ...state,
+                isUpdatingTip: false,
                 error: action.payload
             }
         default:
