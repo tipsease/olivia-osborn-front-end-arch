@@ -1,10 +1,33 @@
 import React from "react";
+import { connect } from "react-redux";
 import EmployeePage from "../../components/EmployeePage/EmployeePage"
+import { getEmployees } from "../../store/actions";
 
-function EmployeePageView(props) {
-    return (
-        <EmployeePage />
-    )
+class EmployeePageView extends React.Component {
+    state = {
+        employeeList: []
+    }
+
+    componentDidMount() {
+        this.props.getEmployees();
+    }
+
+    render() {
+        return (
+            <EmployeePage
+            employeeList={this.props.employeeList}
+            match={this.props.match}
+            />
+        )
+    }
 }
 
-export default EmployeePageView;
+const mapStateToProps = state => ({
+    employeeList: state.employeeList 
+})
+export default connect(
+    mapStateToProps,
+    { 
+        getEmployees
+    }
+)(EmployeePageView);

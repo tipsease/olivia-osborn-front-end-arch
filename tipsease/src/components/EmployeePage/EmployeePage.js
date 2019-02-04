@@ -13,7 +13,7 @@ class EmployeePage extends React.Component {
         console.log(this.employee)
         return (
             <div>
-                <img src={this.employee.photo_url} alt="server" />
+                <img src={this.employee.imageUrl} alt="server" />
                 <h2>{this.employee.name}</h2>
                 <TipForm/>
             </div>
