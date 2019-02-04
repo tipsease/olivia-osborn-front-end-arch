@@ -54,6 +54,7 @@ function Login(props) {
     return (
         <LoginCard>
             <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
+            <h2>Login:</h2>
             <StyledForm>
                 <StyledInput
                     type="text"

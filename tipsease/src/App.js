@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import './App.css';
 // import Login from "./components/Login/Login";
-import SearchPage from "./components/SearchPage/SearchPage";
-import EmployeePage from "./components/EmployeePage/EmployeePage";
+import Registration from "./components/Login/Registration";
+// import SearchPage from "./components/SearchPage/SearchPage";
+// import EmployeePage from "./components/EmployeePage/EmployeePage";
+
 
 function compare(a,b) {
   if (a.name < b.name)
@@ -28,7 +30,8 @@ class App extends Component {
     return (
       <div className="App">
         {/* <Login/> */}
-        <Route
+        <Registration/>
+        {/* <Route
         exact path="/"
         render={props => (
           <SearchPage 
@@ -46,7 +49,7 @@ class App extends Component {
           employeeList={this.state.employeeList}
           />
         )}
-        />
+        /> */}
       </div>
     );
   }
