@@ -14,6 +14,11 @@ const LoginCard = styled.div`
 const LoginLogo = styled.img`
     height: 200px;
     width: auto;
+    margin-bottom: 0;
+`
+
+const LoginTitle = styled.h2`
+    margin-top: 0;
 `
 
 const StyledInput = styled.input`
@@ -54,7 +59,7 @@ function Login(props) {
     return (
         <LoginCard>
             <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
-            <h2>Login:</h2>
+            <LoginTitle>Login:</LoginTitle>
             <StyledForm>
                 <StyledInput
                     type="text"

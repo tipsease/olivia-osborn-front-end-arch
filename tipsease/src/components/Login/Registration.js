@@ -15,6 +15,11 @@ const RegisterCard = styled.div`
 const LoginLogo = styled.img`
     height: 200px;
     width: auto;
+    padding-bottom: 0;
+`
+
+const LoginTitle = styled.h2`
+    margin-top: 0;
 `
 
 const StyledForm = styled.form`
@@ -47,7 +52,7 @@ function Registration(props) {
     return (
         <RegisterCard>
             <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
-            <h2>Create an account:</h2>
+            <LoginTitle>Create an account:</LoginTitle>
             <StyledForm>
                 <StyledInput
                     type="text"
