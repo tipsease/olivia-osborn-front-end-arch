@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledEmployee = styled.div`
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 250px;
     margin: 20px;
     padding-bottom: 20px;
@@ -10,6 +9,9 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #282B2D;
 `
 
 const EmployeeImg = styled.img`
@@ -22,7 +24,7 @@ const Name = styled.p`
     color: black;
     margin: 5px 0px 0px;
     font-weight: bold;
-
+    text-align: center;
 `
 
 function EmployeeCard(props) {

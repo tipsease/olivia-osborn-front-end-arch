@@ -5,12 +5,16 @@ import {
     UPDATING_TIP_START,
     UPDATING_TIP_SUCCESS,
     UPDATING_TIP_FAILURE,
+    ADDING_EMPLOYEE_START,
+    ADDING_EMPLOYEE_SUCCESS,
+    ADDING_EMPLOYEE_FAILURE,
 } from "../actions"
 
 const initialState = {
     employeeList: [],
     isFetching: false,
     isUpdatingTip: false,
+    isAddingEmployee: false,
     error: null,
 }
 
@@ -49,6 +53,23 @@ const employeeList = (state = initialState, action) => {
             return {
                 ...state,
                 isUpdatingTip: false,
+                error: action.payload
+            }
+        case ADDING_EMPLOYEE_START:
+            return {
+                ...state,
+                isAddingEmployee: true
+            }
+        case ADDING_EMPLOYEE_SUCCESS:
+            return {
+                ...state,
+                isAddingEmployee: false,
+                employeeList: action.payload
+            }
+        case ADDING_EMPLOYEE_FAILURE:
+            return {
+                ...state,
+                isAddingEmployee: false,
                 error: action.payload
             }
         default:

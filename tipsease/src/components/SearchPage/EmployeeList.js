@@ -7,6 +7,7 @@ const StyledEmployeeList = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-top: 50px;
 `
 
 

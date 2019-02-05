@@ -25,7 +25,9 @@ class EmployeePageView extends React.Component {
         }})
     }
     componentDidMount() {
-        this.props.getEmployees();
+        if (this.props.employeeList.length === 0) {
+            this.props.getEmployees();
+        }
     }
 
     

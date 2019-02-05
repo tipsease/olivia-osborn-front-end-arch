@@ -9,7 +9,8 @@ const LoginCard = styled.div`
     margin: 10% auto;
     padding-bottom: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background: #EEF1E3;
+    background: white;
+    border-radius: 10px;
 
 `
 const LoginLogo = styled.img`
@@ -39,21 +40,23 @@ const Submit = styled.button`
     font-size: 1rem;
     border: 1px solid gray;
     width: 50%;
-    border-radius: 10px;
+    border-radius: 5px;
+    color: #282B2D
     &:hover {
         cursor: pointer;
-        background: hsl(132,14%,58%);
+        background: #282B2D;
+        color: #67AB4C;
     }
 `
 
 const SignUp = styled.button`
-background: #EEF1E3;
+background: white
 font-size: 1rem;
 border: white;
 margin-top: 20px;
 &:hover {
     cursor: pointer;
-    color: hsl(132,14%,58%);
+    color: #67AB4C;
 }
 `
 

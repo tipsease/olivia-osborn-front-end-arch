@@ -10,7 +10,8 @@ const RegisterCard = styled.div`
     margin: 10% auto;
     padding-bottom: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background: #EEF1E3;
+    background: white;
+    border-radius: 10px;
 `
 const LoginLogo = styled.img`
     height: 200px;
@@ -39,10 +40,12 @@ const Submit = styled.button`
     font-size: 1rem;
     border: 1px solid gray;
     width: 50%;
-    border-radius: 10px;
+    border-radius: 5px;
+    color: #282B2D    
     &:hover {
         cursor: pointer;
-        background: hsl(132,14%,58%);
+        background: #282B2D;
+        color: #67AB4C;
     }
 `
 
@@ -58,33 +61,38 @@ function Registration(props) {
                 <StyledInput
                     type="text"
                     placeholder="first name"
-                    name="firstName"
+                    name="name"
+                    onChange={props.handleChanges}
                 />     
                 <StyledInput
                     type="text"
-                    placeholder="last name"
-                    name="lastName"
+                    placeholder="profile pic"
+                    name="imageUrl"
+                    onChange={props.handleChanges}
                 />                
                 <StyledInput
-                    type="text"
-                    placeholder="email"
-                    name="email"
+                    type="number"
+                    placeholder="price"
+                    name="price"
+                    onChange={props.handleChanges}
                 />             
                 <StyledInput
-                    type="password"
-                    placeholder="password"
-                    name="password"
+                    type="text"
+                    placeholder="description"
+                    name="description"
+                    onChange={props.handleChanges}
                 />  
-                <StyledInput
+                {/* <StyledInput
                     type="password"
                     placeholder="confirm password"
                     name="confirmPassword"
-                />
+                    onChange={props.handleChanges}
+                /> */}
                 <RadioInputs>
                     <input type="radio" name="register" value="employee"/> Employee
                     <input type="radio" name="register" value="patron"/> Patron
                 </RadioInputs>                
-                <Submit>Submit</Submit>         
+                <Submit onClick={e => props.registerEmployee(e)}>Submit</Submit>         
             </StyledForm>
         </RegisterCard>
     )
