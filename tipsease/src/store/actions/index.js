@@ -14,7 +14,7 @@ export const ADDING_EMPLOYEE_FAILURE = "ADDING_EMPLOYEE_FAILURE";
 export const getEmployees = () => dispatch => {
     dispatch({type: FETCHING_EMPLOYEES_START});
     axios
-        .get("http://localhost:3333/items")
+        .get("http://localhost:3333/items/")
         .then(response => {
             dispatch({type: FETCHING_EMPLOYEES_SUCCESS, payload: response.data})
         })

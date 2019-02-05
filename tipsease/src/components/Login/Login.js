@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const LoginCard = styled.div`
     display: flex;
@@ -49,16 +50,16 @@ const Submit = styled.button`
     }
 `
 
-const SignUp = styled.button`
-background: white
-font-size: 1rem;
-border: white;
-margin-top: 20px;
-&:hover {
-    cursor: pointer;
-    color: #67AB4C;
-}
-`
+// const SignUp = styled.button`
+// background: white
+// font-size: 1rem;
+// border: white;
+// margin-top: 20px;
+// &:hover {
+//     cursor: pointer;
+//     color: #67AB4C;
+// }
+// `
 
 function Login(props) {
     return (
@@ -78,7 +79,9 @@ function Login(props) {
                 />       
                 <Submit>Submit</Submit>         
             </StyledForm>
-            <SignUp>Sign up</SignUp>
+            <Link
+                to="/register"
+                >Sign Up</Link>
         </LoginCard>
     )
 }

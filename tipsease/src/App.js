@@ -1,19 +1,15 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { connect } from "react-redux";
 
 import LoginView from "./views/LoginView";
 import RegisterView from "./views/RegisterView";
 import SearchEmployeeView from './views/PatronLogin/SearchEmployeeView';
 import EmployeePageView from "./views/PatronLogin/EmployeePageView";
 import EmployeeProfileView from "./views/EmployeeLogin/EmployeeProfileView";
-import { getEmployees } from "./store/actions";
+// import { getEmployees } from "./store/actions";
 
 class App extends React.Component {
     
-    componentDidMount() {
-        this.props.getEmployees()
-    }
     render() {
         return (
             <div className="App">
@@ -31,7 +27,12 @@ class App extends React.Component {
             />
             <Route 
                 path="/server:id" 
-                component={EmployeePageView}
+                render={props => 
+                    <EmployeePageView 
+                    {...props}
+                    // employeeList={this.props.employeeList}
+                    />
+                }
             />
             <Route
                 path="/profile"
@@ -42,13 +43,4 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    employeeList: state.employeeList
-})
-
-export default connect (
-    mapStateToProps,
-    {
-        getEmployees
-    }
-)(App);
+export default App

@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom"
-// import RestaurantSearch from "./RestaurantSearch";
 import EmployeeList from "./EmployeeList";
 import styled from "styled-components";
 

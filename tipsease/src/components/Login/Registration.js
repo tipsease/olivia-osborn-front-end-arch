@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "./Login";
+import { Link } from "react-router-dom"
 
 const RegisterCard = styled.div`
     display: flex;
@@ -49,6 +50,17 @@ const Submit = styled.button`
     }
 `
 
+// const SignIn = styled.div`
+// background: white
+// font-size: 1rem;
+// border: white;
+// margin-top: 20px;
+// &:hover {
+//     cursor: pointer;
+//     color: #67AB4C;
+// }
+// `
+
 const RadioInputs = styled.div`
     margin-bottom: 10px;
 `
@@ -94,6 +106,10 @@ function Registration(props) {
                 </RadioInputs>           
                 <Submit onClick={e => props.registerEmployee(e)}>Submit</Submit>         
             </StyledForm>
+                <Link
+                to="/login"
+                >Sign In</Link>
+
         </RegisterCard>
     )
 }
