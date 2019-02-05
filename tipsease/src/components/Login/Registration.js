@@ -91,7 +91,7 @@ function Registration(props) {
                 <RadioInputs>
                     <input type="radio" name="register" value="employee"/> Employee
                     <input type="radio" name="register" value="patron"/> Patron
-                </RadioInputs>                
+                </RadioInputs>           
                 <Submit onClick={e => props.registerEmployee(e)}>Submit</Submit>         
             </StyledForm>
         </RegisterCard>

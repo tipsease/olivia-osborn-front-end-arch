@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
+import { NavLink } from "react-router-dom"
 // import RestaurantSearch from "./RestaurantSearch";
 import EmployeeList from "./EmployeeList";
 import styled from "styled-components";
+
 
 const SearchBar = styled.div`
     background: #86A38C;
@@ -29,30 +31,32 @@ const SearchInput = styled.input`
 // `
 
 
-class SearchPage extends Component {
-
-
-    render() {
-        return (
-            <div>
-                <SearchBar>
-                    {/* <TopBarImg src={require("../../img/tipease4.png")} alt=""/> */}
-                    <SearchInput
-                    type="text"
-                    placeholder="search"
-                    />
-                    <a href="http://localhost:3000/login">Log Out</a>
-                </SearchBar>
-                {/* <RestaurantSearch 
-                restaurantList={this.props.restaurantList}
-                /> */}
-                <EmployeeList 
-                employeeList={this.props.employeeList}
+function SearchPage(props) {
+    return (
+        <div>
+            <SearchBar>
+                {/* <TopBarImg src={require("../../img/tipease4.png")} alt=""/> */}
+                <SearchInput 
+                type="text"
+                placeholder="search"
+                onChange={props.search}
+                name="searchInput"
                 />
-            </div>
-        )
-    }
+                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/login">Log Out</NavLink>
+            </SearchBar>
+            {/* <RestaurantSearch 
+            restaurantList={this.props.restaurantList}
+            /> */}
+            <EmployeeList 
+            employees = {
+                props.filteredEmployees.length > 0 ? props.filteredEmployees : props.employeeList
+            }
+            />
+        </div>
+    )
 }
+
 
 export default SearchPage;
 

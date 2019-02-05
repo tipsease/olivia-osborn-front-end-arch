@@ -8,12 +8,16 @@ class RegisterView extends React.Component {
         super()
         this.state = {
             newEmployee: {
-                firstName: "",
-                profPic: "",
+                name: "",
+                imageUrl: "",
                 price: null,
                 description: "",
+            },
+            newPatron: {
+                
             }
         }
+
     }
 
     handleChanges = e => {

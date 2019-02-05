@@ -34,7 +34,7 @@ class App extends React.Component {
                 component={EmployeePageView}
             />
             <Route
-                path="/profile:id"
+                path="/profile"
                 component={EmployeeProfileView}
             />
           </div>

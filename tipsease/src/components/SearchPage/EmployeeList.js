@@ -14,7 +14,7 @@ const StyledEmployeeList = styled.div`
 function EmployeeList(props) {
     return (
         <StyledEmployeeList>
-            {props.employeeList.map(employee => (
+            {props.employees.map(employee => (
                 <Link 
                 to={`/server${employee.id}`} 
                 key={employee.id} 

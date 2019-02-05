@@ -5,11 +5,20 @@ import { getEmployees, updateTip } from "../../store/actions";
 
 class SearchEmployeeView extends React.Component {
     state = {
-        employeeList: []
+        employeeList: [],
+        filteredEmployees: [],
     }
 
     componentDidMount() {
         this.props.getEmployees();
+    }
+    
+    search = e => {
+        const searchedEmployee = this.props.employeeList.filter(employee => {
+            return employee.name.toLowerCase().includes(e.target.value) && employee;
+            }
+        );
+        this.setState({filteredEmployees: searchedEmployee})
     }
 
     render() {
@@ -21,6 +30,9 @@ class SearchEmployeeView extends React.Component {
                 {this.props.employeeList && (
                     <SearchPage
                     employeeList={this.props.employeeList}
+                    filteredEmployees={this.state.filteredEmployees}
+                    search={this.search}
+                    handleSearch={this.handleSearch}
                     />
                 )}
                 {this.props.error && (
