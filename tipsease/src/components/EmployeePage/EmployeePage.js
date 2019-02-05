@@ -9,7 +9,7 @@ function EmployeePage(props) {
             <div>
                 <img src={employee.imageUrl} alt="server" />
                 <h2>{employee.name}</h2>
-                <p>{employee.price}</p> 
+                <p>${employee.price}</p> 
                 <div>
                     <label>Custom Tip:</label>
                     <input 

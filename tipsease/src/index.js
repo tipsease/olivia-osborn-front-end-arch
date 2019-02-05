@@ -8,8 +8,8 @@ import rootReducer from "./store/reducers";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 
-// import Login from "./components/Login/Login";
-// import Registration from "./components/Login/Registration";
+import Login from "./components/Login/Login";
+import Registration from "./components/Login/Registration";
 import SearchEmployeeView from './views/PatronLogin/SearchEmployeeView';
 import EmployeePageView from "./views/PatronLogin/EmployeePageView";
 
@@ -24,8 +24,14 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-            {/* <Login/> */}
-            {/* <Registration/> */}
+            <Route 
+                path="/login"
+                component={Login}
+            />
+            <Route 
+                path="/register"
+                component={Registration}
+            />
             <Route
                 exact path="/"
                 component={SearchEmployeeView}

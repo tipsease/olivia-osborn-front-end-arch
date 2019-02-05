@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "build": "^0.1.4",
+    "netlify": "^2.2.5",
+    "netlify-cli": "^2.6.6",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

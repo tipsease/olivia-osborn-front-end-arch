@@ -10,7 +10,7 @@ const RegisterCard = styled.div`
     margin: 10% auto;
     padding-bottom: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    background: #EEF1E3;
 `
 const LoginLogo = styled.img`
     height: 200px;
@@ -35,13 +35,14 @@ const StyledInput = styled.input`
 `
 
 const Submit = styled.button`
-    background: lightgray;
+    background: #67AB4C;    
     font-size: 1rem;
     border: 1px solid gray;
     width: 50%;
+    border-radius: 10px;
     &:hover {
         cursor: pointer;
-        background: gray;
+        background: hsl(132,14%,58%);
     }
 `
 
