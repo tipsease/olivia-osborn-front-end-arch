@@ -1,15 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const EmployeePageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background: white;
-    padding: 40px 0;
+    padding: 100px 0;
 `
+
+const NavBar = styled.div`
+    background: #67AB4C;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+`
+
 const EmployeeImg = styled.img`
     border-radius: 10px;
 `
@@ -33,20 +44,27 @@ function EmployeePage(props) {
         }
 
         return (
+            <>
+            <NavBar>
+                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/login">Logout</NavLink>
+            </NavBar>
             <EmployeePageContainer>
-                <EmployeeImg src={employee.imageUrl} alt="server" />
-                <h2>{employee.name}</h2>
+                <EmployeeImg src={employee.photo_url} alt="server" />
+                <h2>{employee.first_name}</h2>
                 <TipContainer>
-                <p>${employee.price}</p> 
+                {/* <p>${employee.price}</p>  */}
                     <input 
-                    type="number"
-                    name="price" //will be "tip" later on
+                    type="text"
+                    name="amount" 
                     onChange={props.handleChanges}
                     placeholder="Tip amount..."
                     />
                     <button onClick={e=> props.addTip(e, employee.id)}>Send Tip</button>
                 </TipContainer>
             </EmployeePageContainer>
+            </>
         )
     
 }

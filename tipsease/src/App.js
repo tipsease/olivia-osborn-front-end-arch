@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import LoginView from "./views/LoginView";
-import RegisterView from "./views/RegisterView";
+import Registration from "./components/Login/Registration";
 import SearchEmployeeView from './views/PatronLogin/SearchEmployeeView';
 import EmployeePageView from "./views/PatronLogin/EmployeePageView";
 import EmployeeProfileView from "./views/EmployeeLogin/EmployeeProfileView";
@@ -19,7 +19,7 @@ class App extends React.Component {
             />
             <Route 
                 path="/register"
-                component={RegisterView}
+                component={Registration}
             />
             <Route
                 exact path="/"

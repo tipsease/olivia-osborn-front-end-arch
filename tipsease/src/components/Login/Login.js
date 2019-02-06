@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { withRouter } from "react-router";
 
 const LoginCard = styled.div`
     display: flex;
@@ -42,12 +44,17 @@ const Submit = styled.button`
     border: 1px solid gray;
     width: 50%;
     border-radius: 5px;
-    color: #282B2D
+    color: #282B2D;
+    margin-bottom 20px;
     &:hover {
         cursor: pointer;
         background: #282B2D;
         color: #67AB4C;
     }
+`
+
+const RadioInputs = styled.div`
+    margin-bottom: 10px;
 `
 
 // const SignUp = styled.button`
@@ -61,29 +68,68 @@ const Submit = styled.button`
 // }
 // `
 
-function Login(props) {
-    return (
-        <LoginCard>
-            <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
-            <LoginTitle>Login:</LoginTitle>
-            <StyledForm>
-                <StyledInput
-                    type="text"
-                    placeholder="email"
-                    name="email"
-                />
-                <StyledInput
-                    type="password"
-                    placeholder="password"
-                    name="password"
-                />       
-                <Submit>Submit</Submit>         
-            </StyledForm>
-            <Link
-                to="/register"
-                >Sign Up</Link>
-        </LoginCard>
-    )
+class Login extends React.Component {
+    state = {
+        email: "",
+        password: "",
+        errorMsg: null,
+        tipperBoolean: false,
+    }
+
+    handleInputChange = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        const endpoint = "https://tipsease-backend.herokuapp.com/api/login"
+
+        axios
+            .post(endpoint, this.state)
+            .then(response => {
+                localStorage.setItem("jwt", response.data.token);
+                // localStorage.setItem("user", response.data.)
+                this.props.history.push("/")
+                console.log("it worked!!", response.data)
+            })
+            .catch(err => console.log(err));    
+    }
+
+
+    render() {
+        return (
+            <LoginCard>
+                <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
+                <LoginTitle>Login:</LoginTitle>
+                <StyledForm> 
+                    <StyledInput
+                        type="text"
+                        placeholder="email"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                    />
+                    <StyledInput
+                        type="text"
+                        placeholder="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                    />       
+                    <RadioInputs>
+                        <input type="radio" name="tipperBoolean" value={false} onChange={this.handleInputChange} defaultChecked/> Employee
+                        <input type="radio" name="tipperBoolean" value={true} onChange={this.handleInputChange} /> Patron
+                    </RadioInputs>  
+                    {/* {this.state.errorMsg && <p>{this.state.errorMsg}</p>} */}
+                    <Submit onClick={this.handleSubmit}>Submit</Submit>         
+                </StyledForm>
+                <Link
+                    to="/register"
+                    style={{textDecoration: "none", color: "#282B2D"}}
+                    >Sign Up</Link>
+            </LoginCard>
+        )
+    }
 }
 
-export default Login;
+export default withRouter(Login);

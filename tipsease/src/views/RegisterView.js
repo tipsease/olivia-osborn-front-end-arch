@@ -1,55 +1,55 @@
-import React from "react";
-import { connect } from "react-redux";
-import Registration from "../components/Login/Registration";
-import { addEmployee } from "../store/actions"
+// import React from "react";
+// import { connect } from "react-redux";
+// import Registration from "../components/Login/Registration";
+// import { addEmployee } from "../store/actions"
 
-class RegisterView extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            newEmployee: {
-                name: "",
-                imageUrl: "",
-                price: null,
-                description: "",
-            },
-            newPatron: {
+// class RegisterView extends React.Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             newEmployee: {
+//                 name: "",
+//                 imageUrl: "",
+//                 price: null,
+//                 description: "",
+//             },
+//             newPatron: {
                 
-            }
-        }
+//             }
+//         }
 
-    }
+//     }
 
-    handleChanges = e => {
-        this.setState({ newEmployee: {
-            ...this.state.newEmployee,
-            [e.target.name]: e.target.value
-        }});
-    }
+//     handleChanges = e => {
+//         this.setState({ newEmployee: {
+//             ...this.state.newEmployee,
+//             [e.target.name]: e.target.value
+//         }});
+//     }
 
-    registerEmployee = e => {
-        e.preventDefault();
-        console.log("registering")
-        console.log(this.state.newEmployee)
-        this.props.addEmployee(this.state.newEmployee)
-    }
-    render() {
-        return (
-            <Registration
-            handleChanges={this.handleChanges}
-            registerEmployee={this.registerEmployee}
-            />
-        )
-    }
-}
+//     registerEmployee = e => {
+//         e.preventDefault();
+//         console.log("registering")
+//         console.log(this.state.newEmployee)
+//         this.props.addEmployee(this.state.newEmployee)
+//     }
+//     render() {
+//         return (
+//             <Registration
+//             handleChanges={this.handleChanges}
+//             registerEmployee={this.registerEmployee}
+//             />
+//         )
+//     }
+// }
 
-const mapStateToProps = state => ({
-    employeeList: state.employeeList
-})
+// const mapStateToProps = state => ({
+//     employeeList: state.employeeList
+// })
 
-export default connect (
-    mapStateToProps,
-    {
-        addEmployee
-    }
-)(RegisterView);
+// export default connect (
+//     mapStateToProps,
+//     {
+//         addEmployee
+//     }
+// )(RegisterView);

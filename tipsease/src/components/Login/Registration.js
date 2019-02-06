@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import "./Login";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const RegisterCard = styled.div`
     display: flex;
@@ -42,7 +43,8 @@ const Submit = styled.button`
     border: 1px solid gray;
     width: 50%;
     border-radius: 5px;
-    color: #282B2D    
+    color: #282B2D  
+    margin-bottom: 20px;  
     &:hover {
         cursor: pointer;
         background: #282B2D;
@@ -50,68 +52,87 @@ const Submit = styled.button`
     }
 `
 
-// const SignIn = styled.div`
-// background: white
-// font-size: 1rem;
-// border: white;
-// margin-top: 20px;
-// &:hover {
-//     cursor: pointer;
-//     color: #67AB4C;
-// }
-// `
-
 const RadioInputs = styled.div`
     margin-bottom: 10px;
 `
-function Registration(props) {
-    return (
-        <RegisterCard>
-            <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
-            <LoginTitle>Create an account:</LoginTitle>
-            <StyledForm>
-                <StyledInput
-                    type="text"
-                    placeholder="first name"
-                    name="name"
-                    onChange={props.handleChanges}
-                />     
-                <StyledInput
-                    type="text"
-                    placeholder="profile pic"
-                    name="imageUrl"
-                    onChange={props.handleChanges}
-                />                
-                <StyledInput
-                    type="number"
-                    placeholder="price"
-                    name="price"
-                    onChange={props.handleChanges}
-                />             
-                <StyledInput
-                    type="text"
-                    placeholder="description"
-                    name="description"
-                    onChange={props.handleChanges}
-                />  
-                {/* <StyledInput
-                    type="password"
-                    placeholder="confirm password"
-                    name="confirmPassword"
-                    onChange={props.handleChanges}
-                /> */}
-                <RadioInputs>
-                    <input type="radio" name="register" value="employee"/> Employee
-                    <input type="radio" name="register" value="patron"/> Patron
-                </RadioInputs>           
-                <Submit onClick={e => props.registerEmployee(e)}>Submit</Submit>         
-            </StyledForm>
-                <Link
-                to="/login"
-                >Sign In</Link>
+class Registration extends React.Component {
+    state = {
+        first_name: "",
+        last_name: "",
+        email: "",   //YOU MUSt ALWAYS HAVE A UNIQUE EMAIL
+        password: "",
+        errorMsg: null
+    }
+ 
+    handleChanges = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
 
-        </RegisterCard>
-    )
+    handleSignup = event => {
+    event.preventDefault();
+
+    axios
+      .post('https://tipsease-backend.herokuapp.com/api/register', {
+        // this was a mistake, but you can do it this way
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        email: this.state.email,
+        password: this.state.password     
+      })
+      .then(res => {
+        localStorage.setItem('jwt', res.data.token);
+        console.log("it worked!!", res.data)
+
+        this.props.history.push('/');
+      })
+      .catch(err => this.setState({ errorMsg: 'lol maybe you didnt put in a unique email' }));
+  };
+
+    render() {
+        return (
+            <RegisterCard>
+                <LoginLogo src={require("../../img/tipease4.png")} alt=""/>
+                <LoginTitle>Create an account:</LoginTitle>
+                <StyledForm>
+                    <StyledInput
+                        type="text"
+                        placeholder="first name"
+                        name="first_name"
+                        onChange={this.handleChanges}
+                    />     
+                    <StyledInput
+                        type="text"
+                        placeholder="last name"
+                        name="last_name"
+                        onChange={this.handleChanges}
+                    />                
+                    <StyledInput
+                        type="text"
+                        placeholder="email"
+                        name="email"
+                        onChange={this.handleChanges}
+                    />             
+                    <StyledInput
+                        type="text"
+                        placeholder="password"
+                        name="password"
+                        onChange={this.handleChanges}
+                    />  
+                    <RadioInputs>
+                        <input type="radio" name="tipperBoolean" value={false} onChange={this.handleChanges} defaultChecked/> Employee
+                        <input type="radio" name="tipperBoolean" value={true} onChange={this.handleChanges}/> Patron
+                    </RadioInputs>     
+                    {this.state.errorMsg && <p>{this.state.errorMsg}</p> }     
+                    <Submit onClick={this.handleSignup}>Submit</Submit>         
+                </StyledForm>
+                    <Link
+                    to="/login"
+                    style={{textDecoration: "none", color: "#282B2D"}}
+                    >Sign In</Link>
+    
+            </RegisterCard>
+        )
+    }
 }
 
 export default Registration;

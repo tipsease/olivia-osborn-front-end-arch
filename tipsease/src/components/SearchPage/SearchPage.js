@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import EmployeeList from "./EmployeeList";
 import styled from "styled-components";
 
 
-const SearchBar = styled.div`
-    background: #86A38C;
+const NavBar = styled.div`
+    background: #67AB4C;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -33,7 +33,7 @@ const SearchInput = styled.input`
 function SearchPage(props) {
     return (
         <div>
-            <SearchBar>
+            <NavBar>
                 {/* <TopBarImg src={require("../../img/tipease4.png")} alt=""/> */}
                 <SearchInput 
                 type="text"
@@ -43,7 +43,7 @@ function SearchPage(props) {
                 />
                 <NavLink to="/profile">Profile</NavLink>
                 <NavLink to="/login">Log Out</NavLink>
-            </SearchBar>
+            </NavBar>
             {/* <RestaurantSearch 
             restaurantList={this.props.restaurantList}
             /> */}

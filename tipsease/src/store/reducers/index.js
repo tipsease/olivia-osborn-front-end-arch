@@ -2,6 +2,9 @@ import {
     FETCHING_EMPLOYEES_START, 
     FETCHING_EMPLOYEES_SUCCESS, 
     FETCHING_EMPLOYEES_FAILURE,
+    FETCHING_TIP_DATA_START,
+    FETCHING_TIP_DATA_SUCCESS,
+    FETCHING_TIP_DATA_FAILURE,
     UPDATING_TIP_START,
     UPDATING_TIP_SUCCESS,
     UPDATING_TIP_FAILURE,
@@ -12,29 +15,48 @@ import {
 
 const initialState = {
     employeeList: [],
-    isFetching: false,
+    tipList: [],
+    isFetchingEmployees: false,
+    isFetchingTips: false,
     isUpdatingTip: false,
     isAddingEmployee: false,
     error: null,
 }
 
-const employeeList = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCHING_EMPLOYEES_START:
             return {
                 ...state,
-                isFetching: true
+                isFetchingEmployees: true
             }
         case FETCHING_EMPLOYEES_SUCCESS:
             return {
                 ...state,
-                isFetching: false,
+                isFetchingEmployees: false,
                 employeeList: action.payload
             }
         case FETCHING_EMPLOYEES_FAILURE:
             return {
                 ...state,
-                isFetching: false,
+                isFetchingEmployees: false,
+                error: action.payload
+            }
+        case FETCHING_TIP_DATA_START:
+            return {
+                ...state,
+                isFetchingTips: true
+            }
+        case FETCHING_TIP_DATA_SUCCESS:
+            return {
+                ...state,
+                isFetchingTips: false,
+                tipList: action.payload
+            }
+        case FETCHING_TIP_DATA_FAILURE:
+            return {
+                ...state,
+                isFetchingTips: false,
                 error: action.payload
             }
         case UPDATING_TIP_START:
@@ -77,4 +99,4 @@ const employeeList = (state = initialState, action) => {
     }
 }
 
-export default employeeList;
+export default reducer;

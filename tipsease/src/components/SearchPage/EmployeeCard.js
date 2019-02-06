@@ -30,8 +30,8 @@ const Name = styled.p`
 function EmployeeCard(props) {
     return (
         <StyledEmployee>
-            <EmployeeImg src={props.employee.imageUrl} alt=""/>
-            <Name>{props.employee.name}</Name>
+            <EmployeeImg src={props.employee.photo_url} alt=""/>
+            <Name>{props.employee.first_name}</Name>
         </StyledEmployee>
     )
 }
