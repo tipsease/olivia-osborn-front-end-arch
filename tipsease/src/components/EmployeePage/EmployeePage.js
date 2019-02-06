@@ -54,7 +54,7 @@ function EmployeePage(props) {
                 <EmployeeImg src={employee.photo_url} alt="server" />
                 <h2>{employee.first_name}</h2>
                 <TipContainer>
-                {/* <p>${employee.price}</p>  */}
+                {/* <p>${employee.price}</p> */}
                     <input 
                     type="text"
                     name="amount" 

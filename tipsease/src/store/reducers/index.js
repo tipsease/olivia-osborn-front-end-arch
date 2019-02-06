@@ -68,8 +68,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isUpdatingTip: false,
-                employeeList: action.payload
-
+                tipList: [...state.tipList, action.payload]
             }
         case UPDATING_TIP_FAILURE:
             return {

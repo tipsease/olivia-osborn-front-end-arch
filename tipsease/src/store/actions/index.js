@@ -12,6 +12,7 @@ export const ADDING_EMPLOYEE_FAILURE = "ADDING_EMPLOYEE_FAILURE";
 export const FETCHING_TIP_DATA_START = "FETCHING_TIP_DATA_START";
 export const FETCHING_TIP_DATA_SUCCESS = "FETCHING_TIP_DATA_SUCCESS";
 export const FETCHING_TIP_DATA_FAILURE = "FETCHING_TIP_DATA_FAILURE";
+// export const SETTING_b
 
 
 export const getEmployees = () => dispatch => {
@@ -26,10 +27,10 @@ export const getEmployees = () => dispatch => {
         })
 }
 
-export const getTipList = idx => dispatch => {
+export const getTipList = id => dispatch => {
     dispatch({type: FETCHING_TIP_DATA_START});
     axios
-        .get(`https://tipsease-backend.herokuapp.com/api/tippees/${idx}/tips/`)
+        .get(`https://tipsease-backend.herokuapp.com/api/tippees/${id}/tips/`)
         .then(response => {
             console.log("response", response)
             dispatch({type: FETCHING_TIP_DATA_SUCCESS, payload: response.data})
@@ -39,10 +40,10 @@ export const getTipList = idx => dispatch => {
         })
 } 
 
-export const updateTip = (idx, tip)=> dispatch => {
+export const updateTip = (id, tip)=> dispatch => {
     dispatch({type: UPDATING_TIP_START});
     axios
-        .post(`https://tipsease-backend.herokuapp.com/api/tippees/${idx}/tips/`, tip)
+        .post(`https://tipsease-backend.herokuapp.com/api/tippees/${id}/tips/`, tip)
         .then(response => {
             console.log(response.data)
             dispatch({type: UPDATING_TIP_SUCCESS, payload: response.data})
@@ -65,3 +66,7 @@ export const addEmployee = employee => dispatch => {
             dispatch({type: ADDING_EMPLOYEE_FAILURE, payload: err})
         })
 }
+
+// export const setBoolean = bool => dispatch => {
+//     dispatch({})
+// }

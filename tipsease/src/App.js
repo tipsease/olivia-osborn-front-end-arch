@@ -2,11 +2,10 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import LoginView from "./views/LoginView";
-import Registration from "./components/Login/Registration";
+import RegisterView from "./views/RegisterView";
 import SearchEmployeeView from './views/PatronLogin/SearchEmployeeView';
 import EmployeePageView from "./views/PatronLogin/EmployeePageView";
 import EmployeeProfileView from "./views/EmployeeLogin/EmployeeProfileView";
-// import { getEmployees } from "./store/actions";
 
 class App extends React.Component {
     
@@ -19,7 +18,7 @@ class App extends React.Component {
             />
             <Route 
                 path="/register"
-                component={Registration}
+                component={RegisterView}
             />
             <Route
                 exact path="/"
@@ -30,7 +29,6 @@ class App extends React.Component {
                 render={props => 
                     <EmployeePageView 
                     {...props}
-                    // employeeList={this.props.employeeList}
                     />
                 }
             />

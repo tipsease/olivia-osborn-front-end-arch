@@ -7,19 +7,10 @@ import { getEmployees, getTipList, updateTip } from "../../store/actions";
 class EmployeePageView extends React.Component {
     state = {
         employeeList: [],
-        // tippedEmployee: {
-        //     name: "",
-        //     id: null,
-        //     imageUrl: "",
-        //     description: "",
-        //     price: null,
-        //     shipping: ""
-        // }
         tipData: {
-            tippee_id: "5",
+            tippee_id: "",
             tipper_id: "94",
             amount: "",
-            date: "1544895356010"
         }
     }
 
@@ -36,6 +27,8 @@ class EmployeePageView extends React.Component {
             this.props.getEmployees();
         }
         this.props.getTipList(5)
+        const tipperId= localStorage.getItem("userId")
+        this.setState({tipData: {...this.state.tipData, tippee_id: this.props.match.params.id, tipper_id: tipperId}})
     }
 
     addTip = (e, idx) => {
@@ -45,7 +38,8 @@ class EmployeePageView extends React.Component {
     }
 
     render() {
-        console.log(this.props.employeeList)
+        console.log("employeelist", this.props.employeeList)
+        if (!this.props.employeeList) return <p>loading data...</p>
         return (
             <EmployeePage
             employeeList={this.props.employeeList}
