@@ -3,9 +3,9 @@ import axios from "axios";
 export const FETCHING_EMPLOYEES_START = "FETCHING_EMPLOYEES_START";
 export const FETCHING_EMPLOYEES_SUCCESS = "FETCHING_EMPLOYEES_SUCCESS";
 export const FETCHING_EMPLOYEES_FAILURE = "FETCHING_EMPLOYEES_FAILURE";
-export const UPDATING_TIP_START = "UPDATING_TIP_START";
-export const UPDATING_TIP_SUCCESS = "UPDATING_TIP_SUCCESS";
-export const UPDATING_TIP_FAILURE = "UPDATING_TIP_FAILURE";
+export const ADDING_TIP_START = "ADDING_TIP_START";
+export const ADDING_TIP_SUCCESS = "ADDING_TIP_SUCCESS";
+export const ADDING_TIP_FAILURE = "ADDING_TIP_FAILURE";
 // export const ADDING_EMPLOYEE_START = "ADDING_EMPLOYEE_START";
 // export const ADDING_EMPLOYEE_SUCCESS = "ADDING_EMPLOYEE_SUCCESS";
 // export const ADDING_EMPLOYEE_FAILURE = "ADDING_EMPLOYEE_FAILURE";
@@ -48,14 +48,14 @@ export const getTipList = id => dispatch => {
 } 
 
 export const updateTip = (id, tip) => dispatch => {
-    dispatch({type: UPDATING_TIP_START});
+    dispatch({type: ADDING_TIP_START});
     axios
         .post(`https://tipsease-backend.herokuapp.com/api/tippees/${id}/tips/`, tip)
         .then(response => {
-            dispatch({type: UPDATING_TIP_SUCCESS, payload: response.data.tip})
+            dispatch({type: ADDING_TIP_SUCCESS, payload: response.data.tip})
         })
         .catch(err => {
-            dispatch({type: UPDATING_TIP_FAILURE, payload: err})
+            dispatch({type: ADDING_TIP_FAILURE, payload: err})
         })
 }
 
@@ -80,6 +80,7 @@ export const updateEmployee = (id, updatedEmployee) => dispatch => {
             dispatch({type: EDITING_PROFILE_SUCCESS, payload: response.data})
         })
         .catch(err => {
+            console.log("updatedemp", updatedEmployee)
             dispatch({type: EDITING_PROFILE_FAILURE, payload: err})
         })
 }

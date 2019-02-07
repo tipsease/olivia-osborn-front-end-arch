@@ -12,6 +12,10 @@ const StyledEmployee = styled.div`
     background: white;
     border-radius: 10px;
     border: 1px solid #282B2D;
+
+    &:hover {
+        background: #67AB4C;
+    }
 `
 
 const EmployeeImg = styled.img`

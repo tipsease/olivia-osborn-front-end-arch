@@ -1,8 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 
 function Profile(props) {
     const employee = props.employeeList.find(employee =>
-        `${employee.id}` === localStorage.getItem("userId")
+        `${employee.id}` === props.match.params.id
     )
     
     if (!employee) {
@@ -14,8 +15,7 @@ function Profile(props) {
         <div>
             <img src={employee.photo_url} alt="profile"/>
             <h2>{employee.first_name} {employee.last_name}</h2>
-            <p>Working since {`${startDate.toDateString()}`}</p>
-            
+            <p>Working since {`${startDate.toDateString()}`}</p>         
         </div>
     )
 }

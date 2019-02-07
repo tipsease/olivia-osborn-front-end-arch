@@ -5,9 +5,9 @@ import {
     FETCHING_TIP_DATA_START,
     FETCHING_TIP_DATA_SUCCESS,
     FETCHING_TIP_DATA_FAILURE,
-    UPDATING_TIP_START,
-    UPDATING_TIP_SUCCESS,
-    UPDATING_TIP_FAILURE,
+    ADDING_TIP_START,
+    ADDING_TIP_SUCCESS,
+    ADDING_TIP_FAILURE,
     // ADDING_EMPLOYEE_START,
     // ADDING_EMPLOYEE_SUCCESS,
     // ADDING_EMPLOYEE_FAILURE,
@@ -70,18 +70,18 @@ const reducer = (state = initialState, action) => {
                 isFetchingTips: false,
                 error: action.payload
             }
-        case UPDATING_TIP_START:
+        case ADDING_TIP_START:
             return {
                 ...state,
                 isUpdatingTip: true,
             }
-        case UPDATING_TIP_SUCCESS:
+        case ADDING_TIP_SUCCESS:
             return {
                 ...state,
                 isUpdatingTip: false,
                 tipList: [...state.tipList, action.payload]
             }
-        case UPDATING_TIP_FAILURE:
+        case ADDING_TIP_FAILURE:
             return {
                 ...state,
                 isUpdatingTip: false,

@@ -43,11 +43,10 @@ const Submit = styled.button`
     width: 50%;
     border-radius: 5px;
     color: #282B2D  
-    margin-bottom: 20px;  
+    margin: 5px 0 20px; 
     &:hover {
         cursor: pointer;
-        background: #282B2D;
-        color: #67AB4C;
+        background: #86A38C;
     }
 `
 
@@ -85,7 +84,7 @@ class Registration extends React.Component {
 
         this.props.history.push('/login');
       })
-      .catch(err => this.setState({ errorMsg: 'lol maybe you didnt put in a unique email' }));
+      .catch(err => this.setState({ errorMsg: 'Whoops! You need a unique email to register!' }));
   };
 
     render() {

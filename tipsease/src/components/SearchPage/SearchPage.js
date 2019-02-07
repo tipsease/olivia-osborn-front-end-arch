@@ -22,12 +22,10 @@ const SearchInput = styled.input`
     border: 1px solid #282B2D;
 `
 
-// const TopBarImg = styled.img`
-//     height 50px;
-//     width: auto;
-//     margin: 0;
-//     padding: 0 10px;
-// `
+const Logout = styled.div`
+    position: absolute;
+    right: 30px;
+`
 
 
 function SearchPage(props) {
@@ -41,8 +39,13 @@ function SearchPage(props) {
                 onChange={props.search}
                 name="searchInput"
                 />
-                {/* <NavLink to="/profile">Profile</NavLink> */}
-                <NavLink to="/login">Log Out</NavLink>
+                <Logout>
+                    <NavLink 
+                    to="/login"
+                    style={{textDecoration: "none", color: "#282B2D"}}
+                    >Log Out</NavLink>
+                </Logout>
+
             </NavBar>
             {/* <RestaurantSearch 
             restaurantList={this.props.restaurantList}

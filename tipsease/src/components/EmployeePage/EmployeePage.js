@@ -8,17 +8,23 @@ const EmployeePageContainer = styled.div`
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background: white;
-    padding: 100px 0;
+    padding: 150px 0;
 `
 
 const NavBar = styled.div`
+    display: flex;
+    align-items: center;
     background: #67AB4C;
     height: 50px;
-    display: flex;
-    justify-content: center;
     align-items: center;
     position: fixed;
     width: 100%;
+    
+`
+
+const Links = styled.div`
+    position: absolute;
+    right: 30px;
 `
 
 const EmployeeImg = styled.img`
@@ -29,9 +35,29 @@ const TipContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+`
+
+const StyledInput = styled.input`
+    height: 30px;
+    font: 1rem;
+    width: 200px;
+    padding-left: 5px;
+    border-radius 5px;
     border: 1px solid #282B2D;
-    border-radius: 10px
-    padding: 0 20px 20px;
+    margin-bottom: 10px;
+`
+
+const Submit = styled.button`
+    background: #67AB4C;
+    font-size: 1rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: #282B2D;
+    padding: 10px 30px;
+    &:hover {
+        cursor: pointer;
+        background: #86A38C;
+    }
 `
 
 function EmployeePage(props) {
@@ -43,25 +69,29 @@ function EmployeePage(props) {
             return <h2>Loading item data...</h2>
         }
 
+        let startDate = new Date(employee.start_date);
+
         return (
             <>
             <NavBar>
-                <NavLink to="/profile">Profile</NavLink>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/login">Logout</NavLink>
+                <Links>
+                    <NavLink to="/" style={{textDecoration: "none", color: "#282B2D", "marginLeft": "20px"}}>Home</NavLink>
+                    <NavLink to="/login" style={{textDecoration: "none", color: "#282B2D", "marginLeft": "20px"}}>Logout</NavLink>       
+                </Links>
             </NavBar>
             <EmployeePageContainer>
                 <EmployeeImg src={employee.photo_url} alt="server" />
-                <h2>{employee.first_name}{employee.last_name}</h2>
+                <h2>{employee.first_name} {employee.last_name}</h2>
+                <p>Working since {`${startDate.toDateString()}`}</p>
+                <p>"{employee.tagline}"</p>
                 <TipContainer>
-                {/* <p>${employee.price}</p> */}
-                    <input 
+                    <StyledInput
                     type="text"
                     name="amount" 
                     onChange={props.handleChanges}
                     placeholder="Tip amount..."
                     />
-                    <button onClick={e=> props.addTip(e, employee.id)}>Send Tip</button>
+                    <Submit onClick={e=> props.addTip(e, employee.id)}>Send Tip</Submit>
                 </TipContainer>
             </EmployeePageContainer>
             </>

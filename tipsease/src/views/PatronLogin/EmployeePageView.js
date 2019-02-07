@@ -32,12 +32,12 @@ class EmployeePageView extends React.Component {
 
     addTip = (e, idx) => {
         e.preventDefault();
-        console.log("adding tip", this.state.tipData.amount)
-        this.props.updateTip(idx, this.state.tipData)
+        if (this.state.tipData.amount) {
+            this.props.updateTip(idx, this.state.tipData)
+        }
     }
 
     render() {
-        console.log("employeelist", this.props.employeeList)
         if (!this.props.employeeList) return <p>loading data...</p>
         return (
             <EmployeePage
@@ -59,6 +59,6 @@ export default connect(
     { 
         getEmployees,
         getTipList,
-        updateTip
+        updateTip,
     }
 )(EmployeePageView);

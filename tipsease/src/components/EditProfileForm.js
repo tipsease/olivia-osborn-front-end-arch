@@ -2,7 +2,7 @@ import React from "react";
 
 function EditProfileForm(props) {
     const employee = props.employeeList.find(employee =>
-        `${employee.id}` === localStorage.getItem("userId")
+        `${employee.id}` === props.match.params.id
     )
 
     return (

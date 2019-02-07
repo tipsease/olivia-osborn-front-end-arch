@@ -33,7 +33,7 @@ class App extends React.Component {
                 }
             />
             <Route
-                path="/profile"
+                path="/profile/:id"
                 component={ProfileView}
             />
           </div>

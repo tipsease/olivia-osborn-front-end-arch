@@ -15,7 +15,7 @@ class SearchEmployeeView extends React.Component {
     
     search = e => {
         const searchedEmployee = this.props.employeeList.filter(employee => {
-            return employee.name.toLowerCase().includes(e.target.value) && employee;
+            return (employee.first_name.toLowerCase().includes(e.target.value) || employee.last_name.toLowerCase().includes(e.target.value)) && employee;
             }
         );
         this.setState({filteredEmployees: searchedEmployee})
