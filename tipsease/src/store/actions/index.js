@@ -12,7 +12,7 @@ export const ADDING_EMPLOYEE_FAILURE = "ADDING_EMPLOYEE_FAILURE";
 export const FETCHING_TIP_DATA_START = "FETCHING_TIP_DATA_START";
 export const FETCHING_TIP_DATA_SUCCESS = "FETCHING_TIP_DATA_SUCCESS";
 export const FETCHING_TIP_DATA_FAILURE = "FETCHING_TIP_DATA_FAILURE";
-// export const SETTING_b
+
 
 
 export const getEmployees = () => dispatch => {
@@ -46,7 +46,7 @@ export const updateTip = (id, tip)=> dispatch => {
         .post(`https://tipsease-backend.herokuapp.com/api/tippees/${id}/tips/`, tip)
         .then(response => {
             console.log(response.data)
-            dispatch({type: UPDATING_TIP_SUCCESS, payload: response.data})
+            dispatch({type: UPDATING_TIP_SUCCESS, payload: response.data.tip})
         })
         .catch(err => {
             dispatch({type: UPDATING_TIP_FAILURE, payload: err})

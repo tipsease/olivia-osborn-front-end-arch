@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import "./Login";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -73,7 +72,6 @@ class Registration extends React.Component {
 
     axios
       .post('https://tipsease-backend.herokuapp.com/api/register', {
-        // this was a mistake, but you can do it this way
         first_name: this.state.first_name,
         last_name: this.state.last_name,
         email: this.state.email,

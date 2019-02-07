@@ -14,7 +14,6 @@ class EmployeePageView extends React.Component {
         }
     }
 
-
     handleChanges = e => {
         e.preventDefault();
         this.setState({tipData: {
