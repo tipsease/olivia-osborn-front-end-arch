@@ -19,7 +19,6 @@ const NavBar = styled.div`
     align-items: center;
     position: fixed;
     width: 100%;
-    
 `
 
 const Links = styled.div`
@@ -60,13 +59,21 @@ const Submit = styled.button`
     }
 `
 
+const Name = styled.h2`
+    margin-bottom: 10px;
+`
+
+const Info = styled.p`
+    margin: 0 0 10px;
+`
+
 function EmployeePage(props) {
         const employee = props.employeeList.find(employee =>
             `${employee.id}` === props.match.params.id
         )
 
         if (!employee) {
-            return <h2>Loading item data...</h2>
+            return <h2>Loading data...</h2>
         }
 
         let startDate = new Date(employee.start_date);
@@ -81,17 +88,21 @@ function EmployeePage(props) {
             </NavBar>
             <EmployeePageContainer>
                 <EmployeeImg src={employee.photo_url} alt="server" />
-                <h2>{employee.first_name} {employee.last_name}</h2>
-                <p>Working since {`${startDate.toDateString()}`}</p>
-                <p>"{employee.tagline}"</p>
+                <Name>{employee.first_name} {employee.last_name}</Name>
+                <Info>Working since {`${startDate.toDateString()}`}</Info>
+                <Info>"{employee.tagline}"</Info>
                 <TipContainer>
                     <StyledInput
-                    type="text"
+                    type="number"
                     name="amount" 
                     onChange={props.handleChanges}
                     placeholder="Tip amount..."
                     />
                     <Submit onClick={e=> props.addTip(e, employee.id)}>Send Tip</Submit>
+                    {!props.error 
+                        ?(props.tipAdded && <p>${props.amount} sent to {employee.first_name}!</p> ) 
+                        : <p>{props.error}</p>
+                    }
                 </TipContainer>
             </EmployeePageContainer>
             </>

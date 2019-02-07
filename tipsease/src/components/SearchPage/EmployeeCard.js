@@ -12,7 +12,6 @@ const StyledEmployee = styled.div`
     background: white;
     border-radius: 10px;
     border: 1px solid #282B2D;
-
     &:hover {
         background: #67AB4C;
     }
@@ -36,6 +35,7 @@ function EmployeeCard(props) {
         <StyledEmployee>
             <EmployeeImg src={props.employee.photo_url} alt=""/>
             <Name>{props.employee.first_name}</Name>
+            <Name>{props.employee.last_name}</Name>
         </StyledEmployee>
     )
 }

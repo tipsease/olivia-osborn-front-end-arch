@@ -4,6 +4,7 @@ import { getEmployees, getPatrons, updateEmployee } from "../../store/actions";
 import Profile from "../../components/Profile";
 import EditProfileForm from "../../components/EditProfileForm";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom"
 
 const EmployeeContainer = styled.div`
     display: flex;
@@ -15,6 +16,22 @@ const EmployeeContainer = styled.div`
     padding: 100px;
     width: 60%;
     margin: 100px auto;
+`
+
+const NavBar = styled.div`
+    display: flex;
+    align-items: center;
+    background: #67AB4C;
+    height: 50px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+`
+
+const Logout = styled.div`
+    position: absolute;
+    right: 30px;
 `
 
 class ProfileView extends React.Component {
@@ -48,6 +65,11 @@ class ProfileView extends React.Component {
         console.log("rendering")
         return (
             <EmployeeContainer>
+                <NavBar>
+                    <Logout>
+                        <NavLink to="/login" style={{textDecoration: "none", color: "#282B2D", "marginLeft": "20px"}}>Logout</NavLink>
+                    </Logout>
+                </NavBar>
                 {this.props.employeeList && (
                 <Profile 
                 employeeList={this.props.employeeList}
