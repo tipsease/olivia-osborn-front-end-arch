@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { withRouter } from "react-router";
-import { setBoolean } from "../store/actions"
+// import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { getUserType } from "../store/actions";
 
 const LoginCard = styled.div`
     display: flex;
@@ -74,14 +75,12 @@ class LoginView extends React.Component {
         email: "",
         password: "",
         errorMsg: null,
-        tipperBoolean: false,
+        userType: "",
+        tipperBoolean: null,
     }
-
-
 
     handleInputChange = e => {
         this.setState({[e.target.name]: e.target.value})
-        // this.props.setBoolean(this.state.tipperBoolean)
     }
 
     handleSubmit = e => {
@@ -93,7 +92,16 @@ class LoginView extends React.Component {
             .then(response => {
                 localStorage.setItem("jwt", response.data.token);
                 localStorage.setItem("userId", response.data.user.id);
-                this.props.history.push("/")
+                localStorage.setItem("userType", response.data.user.role)
+                this.setState({userType: localStorage.getItem("userType")})
+                this.props.getUserType(this.state.userType)
+                
+                if (this.props.userType === "tipper") {
+                    this.props.history.push("/")
+                }
+                if (this.props.userType === "tippee") {
+                    this.props.history.push("/profile")
+                }
                 console.log("it worked!!", response.data)
             })
             .catch(err => console.log(err));    
@@ -136,23 +144,15 @@ class LoginView extends React.Component {
     }
 }
 
-// const mapStateToProps = state => ({
-//     employeeList: state.employeeList 
-// })
+const mapStateToProps = state => ({
+    employeeList: state.employeeList,
+    userType: state.userType
+})
 
-export default LoginView;
-// export default withRouter(connect(
-//     mapStateToProps,
-//     {
-//         setBoolean
-//     }
-// )(Login));
+export default connect(
+    mapStateToProps,
+    {
+        getUserType
+    }
+)(LoginView);
 
-// export default connect(
-//     mapStateToProps,
-//     { 
-//         getEmployees,
-//         getTipList,
-//         updateTip
-//     }
-// )(EmployeePageView);

@@ -60,7 +60,8 @@ class Registration extends React.Component {
         last_name: "",
         email: "",   //YOU MUST ALWAYS HAVE A UNIQUE EMAIL
         password: "",
-        errorMsg: null
+        errorMsg: null,
+        tipperBoolean: null,
     }
  
     handleChanges = e => {
@@ -75,13 +76,14 @@ class Registration extends React.Component {
         first_name: this.state.first_name,
         last_name: this.state.last_name,
         email: this.state.email,
-        password: this.state.password     
+        password: this.state.password,
+        tipperBoolean: this.state.tipperBoolean === "true" ? true : false     
       })
       .then(res => {
         localStorage.setItem('jwt', res.data.token);
         console.log("it worked!!", res.data)
 
-        this.props.history.push('/');
+        this.props.history.push('/login');
       })
       .catch(err => this.setState({ errorMsg: 'lol maybe you didnt put in a unique email' }));
   };

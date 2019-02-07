@@ -41,7 +41,7 @@ function SearchPage(props) {
                 onChange={props.search}
                 name="searchInput"
                 />
-                <NavLink to="/profile">Profile</NavLink>
+                {/* <NavLink to="/profile">Profile</NavLink> */}
                 <NavLink to="/login">Log Out</NavLink>
             </NavBar>
             {/* <RestaurantSearch 

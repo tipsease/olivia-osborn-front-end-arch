@@ -5,7 +5,7 @@ import LoginView from "./views/LoginView";
 import RegisterView from "./views/RegisterView";
 import SearchEmployeeView from './views/PatronLogin/SearchEmployeeView';
 import EmployeePageView from "./views/PatronLogin/EmployeePageView";
-import EmployeeProfileView from "./views/EmployeeLogin/EmployeeProfileView";
+import ProfileView from "./views/EmployeeLogin/ProfileView";
 
 class App extends React.Component {
     
@@ -34,7 +34,7 @@ class App extends React.Component {
             />
             <Route
                 path="/profile"
-                component={EmployeeProfileView}
+                component={ProfileView}
             />
           </div>
         )

@@ -9,7 +9,7 @@ class EmployeePageView extends React.Component {
         employeeList: [],
         tipData: {
             tippee_id: "",
-            tipper_id: "94",
+            tipper_id: "",
             amount: "",
         }
     }
@@ -25,7 +25,7 @@ class EmployeePageView extends React.Component {
         if (this.props.employeeList.length === 0) {
             this.props.getEmployees();
         }
-        this.props.getTipList(5)
+        this.props.getTipList(this.props.match.params.id)
         const tipperId= localStorage.getItem("userId")
         this.setState({tipData: {...this.state.tipData, tippee_id: this.props.match.params.id, tipper_id: tipperId}})
     }

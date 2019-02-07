@@ -6,12 +6,19 @@ export const FETCHING_EMPLOYEES_FAILURE = "FETCHING_EMPLOYEES_FAILURE";
 export const UPDATING_TIP_START = "UPDATING_TIP_START";
 export const UPDATING_TIP_SUCCESS = "UPDATING_TIP_SUCCESS";
 export const UPDATING_TIP_FAILURE = "UPDATING_TIP_FAILURE";
-export const ADDING_EMPLOYEE_START = "ADDING_EMPLOYEE_START";
-export const ADDING_EMPLOYEE_SUCCESS = "ADDING_EMPLOYEE_SUCCESS";
-export const ADDING_EMPLOYEE_FAILURE = "ADDING_EMPLOYEE_FAILURE";
+// export const ADDING_EMPLOYEE_START = "ADDING_EMPLOYEE_START";
+// export const ADDING_EMPLOYEE_SUCCESS = "ADDING_EMPLOYEE_SUCCESS";
+// export const ADDING_EMPLOYEE_FAILURE = "ADDING_EMPLOYEE_FAILURE";
 export const FETCHING_TIP_DATA_START = "FETCHING_TIP_DATA_START";
 export const FETCHING_TIP_DATA_SUCCESS = "FETCHING_TIP_DATA_SUCCESS";
 export const FETCHING_TIP_DATA_FAILURE = "FETCHING_TIP_DATA_FAILURE";
+export const FETCH_USER_TYPE = "FETCH_USER_TYPE";
+export const FETCHING_PATRONS_START = "FETCHING_PATRONS_START";
+export const FETCHING_PATRONS_SUCCESS = "FETCHING_PATRONS_SUCCESS";
+export const FETCHING_PATRONS_FAILURE = "FETCHING_PATRONS_FAILURE";
+export const EDITING_PROFILE_START = "EDITING_PROFILE_START";
+export const EDITING_PROFILE_SUCCESS = "EDITING_PROFILE_SUCCESS";
+export const EDITING_PROFILE_FAILURE = "EDITING_PROFILE_FAILURE";
 
 
 
@@ -40,12 +47,11 @@ export const getTipList = id => dispatch => {
         })
 } 
 
-export const updateTip = (id, tip)=> dispatch => {
+export const updateTip = (id, tip) => dispatch => {
     dispatch({type: UPDATING_TIP_START});
     axios
         .post(`https://tipsease-backend.herokuapp.com/api/tippees/${id}/tips/`, tip)
         .then(response => {
-            console.log(response.data)
             dispatch({type: UPDATING_TIP_SUCCESS, payload: response.data.tip})
         })
         .catch(err => {
@@ -53,20 +59,34 @@ export const updateTip = (id, tip)=> dispatch => {
         })
 }
 
-export const addEmployee = employee => dispatch => {
-    dispatch({type: ADDING_EMPLOYEE_START});
+export const getPatrons = () => dispatch => {
+    dispatch({type: FETCHING_PATRONS_START});
     axios
-        .post("http://localhost:3333/items", employee)
+        .post("https://tipsease.insanechaos.com/api/tippers")
         .then(response => {
-            console.log("response", response)
-            dispatch({type: ADDING_EMPLOYEE_SUCCESS, payload: response.data})
+            dispatch({type: FETCHING_PATRONS_SUCCESS, payload: response.data})
         })
         .catch(err => {
-            console.log("err", err)
-            dispatch({type: ADDING_EMPLOYEE_FAILURE, payload: err})
+            dispatch({type: FETCHING_PATRONS_FAILURE, payload: err})
         })
 }
 
-// export const setBoolean = bool => dispatch => {
-//     dispatch({})
-// }
+export const updateEmployee = (id, updatedEmployee) => dispatch => {
+    dispatch({type: EDITING_PROFILE_START});
+    axios
+        .put(`https://tipsease-backend.herokuapp.com/api/tippees/${id}`, updatedEmployee)
+        .then(response => {
+            console.log(response)
+            dispatch({type: EDITING_PROFILE_SUCCESS, payload: response.data})
+        })
+        .catch(err => {
+            dispatch({type: EDITING_PROFILE_FAILURE, payload: err})
+        })
+}
+
+export const getUserType = type => {
+    return {
+        type: FETCH_USER_TYPE,
+        payload: type
+    }
+}
