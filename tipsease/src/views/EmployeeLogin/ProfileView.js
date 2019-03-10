@@ -82,7 +82,7 @@ class ProfileView extends React.Component {
           <div>
             <Logout>
               <NavLink
-                to="/login"
+                to="/"
                 style={{ textDecoration: "none", color: "white" }}
               >
                 Log Out

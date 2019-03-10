@@ -82,7 +82,7 @@ class Registration extends React.Component {
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
 
-        this.props.history.push("/login");
+        this.props.history.push("/");
       })
       .catch(err =>
         this.setState({
@@ -141,7 +141,7 @@ class Registration extends React.Component {
           {this.state.errorMsg && <p>{this.state.errorMsg}</p>}
           <Submit onClick={this.handleSignup}>Submit</Submit>
         </StyledForm>
-        <Link to="/login" style={{ textDecoration: "none", color: "#282B2D" }}>
+        <Link to="/" style={{ textDecoration: "none", color: "#282B2D" }}>
           Sign In
         </Link>
       </RegisterCard>

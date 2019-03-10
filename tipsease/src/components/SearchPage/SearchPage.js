@@ -41,7 +41,7 @@ function SearchPage(props) {
     <div>
       <NavBar>
         <div>
-          <NavLink to="/" style={{ textDecoration: "none" }}>
+          <NavLink to="/employees" style={{ textDecoration: "none" }}>
             <Title>TipsEase</Title>
           </NavLink>
         </div>
@@ -55,10 +55,7 @@ function SearchPage(props) {
         </div>
         <div>
           <Logout>
-            <NavLink
-              to="/login"
-              style={{ textDecoration: "none", color: "white" }}
-            >
+            <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
               Log Out
             </NavLink>
           </Logout>

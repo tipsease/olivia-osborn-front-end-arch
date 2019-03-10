@@ -98,19 +98,19 @@ function EmployeePage(props) {
     <>
       <NavBar>
         <div>
-          <NavLink to="/" style={{ textDecoration: "none" }}>
+          <NavLink to="/employees" style={{ textDecoration: "none" }}>
             <Title>TipsEase</Title>
           </NavLink>
         </div>
         <Links>
-          <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
+          <NavLink
+            to="/employees"
+            style={{ textDecoration: "none", color: "white" }}
+          >
             Home
           </NavLink>
           <Logout>
-            <NavLink
-              to="/login"
-              style={{ textDecoration: "none", color: "white" }}
-            >
+            <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
               Log Out
             </NavLink>
           </Logout>

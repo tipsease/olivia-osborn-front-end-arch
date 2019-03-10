@@ -84,7 +84,7 @@ class LoginView extends React.Component {
         this.props.getUserType(this.state.userType);
 
         if (this.props.userType === "tipper") {
-          this.props.history.push("/");
+          this.props.history.push("/employees");
         }
         if (this.props.userType === "tippee") {
           this.props.history.push(`/profile/${localStorage.getItem("userId")}`);
