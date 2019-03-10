@@ -10,9 +10,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Route path="/login" component={LoginView} />
+        <Route exact path="/" component={LoginView} />
         <Route path="/register" component={RegisterView} />
-        <Route exact path="/" component={SearchEmployeeView} />
+        <Route path="/employees" component={SearchEmployeeView} />
         <Route path="/server:id" component={EmployeePageView} />
         <Route path="/profile/:id" component={ProfileView} />
       </div>

@@ -40,8 +40,8 @@ const Links = styled.div`
 `;
 
 const ProfilePic = styled.img`
-  max-width: 150px;
-  width: 25%;
+  max-width: 250px;
+  width: 30%;
   height: auto;
   border-radius: 10px;
 `;
@@ -98,19 +98,19 @@ function EmployeePage(props) {
     <>
       <NavBar>
         <div>
-          <NavLink to="/" style={{ textDecoration: "none" }}>
+          <NavLink to="/employees" style={{ textDecoration: "none" }}>
             <Title>TipsEase</Title>
           </NavLink>
         </div>
         <Links>
-          <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
+          <NavLink
+            to="/employees"
+            style={{ textDecoration: "none", color: "white" }}
+          >
             Home
           </NavLink>
           <Logout>
-            <NavLink
-              to="/login"
-              style={{ textDecoration: "none", color: "white" }}
-            >
+            <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
               Log Out
             </NavLink>
           </Logout>
