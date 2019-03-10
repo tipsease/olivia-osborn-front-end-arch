@@ -40,8 +40,8 @@ const Links = styled.div`
 `;
 
 const ProfilePic = styled.img`
-  max-width: 150px;
-  width: 25%;
+  max-width: 250px;
+  width: 30%;
   height: auto;
   border-radius: 10px;
 `;
